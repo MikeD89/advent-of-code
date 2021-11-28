@@ -1,7 +1,9 @@
 # Advent of Code
-This repository contains my solutions for [Advent of Code](https://adventofcode.com) problems. All solutions are implemented in TypeScript and JavaScript, runnable with modern Node.js.
+This repository contains my solutions for [Advent of Code](https://adventofcode.com) problems. All solutions are implemented in TypeScript.
 
 This is based of T-Hugs' [Advent of Code Template](https://github.com/T-Hugs/advent-of-code)
+
+## Notes
 
   * Solutions are contained in the `years/<year>/<day>/index.ts` file. A solution file contains both part 1 and part 2. The data for the problem is saved in a sibling file `data.txt`.
   * Every time a solution is run, the result is cached. The most recently-computed solution is *always* the one that is submitted when `submit.ts` is run.
