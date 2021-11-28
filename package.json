@@ -1,21 +1,23 @@
 {
 	"name": "advent-of-code",
 	"version": "1.0.0",
-	"description": "Trevor Gau's solutions to Advent of Code",
+	"description": "Mike D's solutions to Advent of Code",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"suck": "ts-node init suck",
+		"seed": "ts-node init seed",
+		"ss": "ts-node init suck seed",
+		"login": "ts-node login",
+		"day": "ts-node run",
+		"submit": "ts-node submit"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/T-Hugs/advent-of-code.git"
+		"url": "git+https://github.com/MikeD89/advent-of-code-typescript.git"
 	},
-	"author": "Trevor Gau",
+	"author": "Mike D",
 	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/T-Hugs/advent-of-code/issues"
-	},
-	"homepage": "https://github.com/T-Hugs/advent-of-code#readme",
 	"dependencies": {
 		"@types/fast-levenshtein": "^0.0.2",
 		"@types/inquirer": "^8.1.3",
