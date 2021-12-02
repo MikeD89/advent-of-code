@@ -22,9 +22,6 @@ async function p2021day2_part1(input: string, ...params: any[]) {
 			case "forward":
 				hori += v;
 				break;
-			case "backwards":
-				hori -= v;
-				break;
 			case "down":
 				depth += v;
 				break;
