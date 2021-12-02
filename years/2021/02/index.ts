@@ -13,13 +13,53 @@ const DAY = 2;
 // problem url  : https://adventofcode.com/2021/day/2
 
 async function p2021day2_part1(input: string, ...params: any[]) {
-	return "Not implemented";
+	const d = input.split("\n").map(s => s.split(" "));
+	let hori = 0;
+	let depth = 0;
+	for (let item of d) {
+		const v = Number(item[1])
+		switch(item[0]){
+			case "forward":
+				hori += v;
+				break;
+			case "backwards":
+				hori -= v;
+				break;
+			case "down":
+				depth += v;
+				break;
+			case "up":
+				depth -= v;
+				break;
+		}
+
+	}
+	return hori * depth;
 }
 
 async function p2021day2_part2(input: string, ...params: any[]) {
-	return "Not implemented";
-}
+	const d = input.split("\n").map(s => s.split(" "));
+	let hori = 0;
+	let depth = 0;
+	let aim = 0;
+	for (let item of d) {
+		const v = Number(item[1])
+		switch(item[0]){
+			case "forward":
+				hori += v;
+				depth += (aim * v);
+				break;
+			case "down":
+				aim += v;
+				break;
+			case "up":
+				aim -= v;
+				break;
+		}
 
+	}
+	return hori * depth;
+}
 async function run() {
 	const part1tests: TestCase[] = [];
 	const part2tests: TestCase[] = [];

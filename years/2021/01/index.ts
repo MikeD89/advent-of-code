@@ -15,9 +15,17 @@ const DAY = 1;
 
 async function p2021day1_part1(input: string, ...params: any[]) {
 	const data = input.split("\n").map(Number);
+	const dataC = input.split("\n");
 	let count = 0;
+
 	for (let i = 1; i <= data.length; i++) {
-		if (data[i] > data[i-1]) {
+		const a = data[i] > data[i-1] ? 1 : 0;
+		const b = dataC[i] > dataC[i-1] ? 1 : 0;
+
+		if(a !== b) {
+			console.log(a, data[i], data[i-1], b, dataC[i], dataC[i-1])
+		}
+		if (a) {
 			count += 1;
 		}
 	}
