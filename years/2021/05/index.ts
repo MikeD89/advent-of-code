@@ -1,10 +1,8 @@
 import _ from "lodash";
 import * as util from "../../../util/util";
-import * as test from "../../../util/test";
 import chalk from "chalk";
-import { log, logSolution, trace } from "../../../util/log";
+import { log, logSolution } from "../../../util/log";
 import { performance } from "perf_hooks";
-import { exit } from "process";
 
 const YEAR = 2021;
 const DAY = 5;
@@ -70,9 +68,6 @@ async function p2021day5(input: number[][][], h: boolean) {
 }
 
 async function run() {
-	const part1tests: TestCase[] = [];
-	const part2tests: TestCase[] = [];
-
 	// Get input and run program while measuring performance
 	const input = await (await util.getInput(DAY, YEAR)).split("\n");
 	const d = input.map(getLine);
