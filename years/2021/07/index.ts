@@ -4,6 +4,7 @@ import * as test from "../../../util/test";
 import chalk from "chalk";
 import { log, logSolution, trace } from "../../../util/log";
 import { performance } from "perf_hooks";
+import { exit } from "process";
 
 const YEAR = 2021;
 const DAY = 7;
@@ -12,17 +13,55 @@ const DAY = 7;
 // data path    : D:\Work\advent-of-code\years\2021\07\data.txt
 // problem url  : https://adventofcode.com/2021/day/7
 
+function median(values: number[]){
+	values.sort(function(a,b){
+	  return a-b;
+	});
+  
+	var half = Math.floor(values.length / 2);
+	
+	if (values.length % 2)
+	  return values[half];
+	
+	return (values[half - 1] + values[half]) / 2.0;
+  }
+
 async function p2021day7_part1(input: string, ...params: any[]) {
-	return "Not implemented";
+	const data = input.split(",").map(Number)
+	const m = median(data);
+	return data.map(d => d - m).map(Math.abs).reduce((a, b) => a+b, 0);
+}
+
+function checkN(data: number[], v: number) {
+	return data.map(d => d - v).map(Math.abs).map(n => (n * (n+1)) / 2).reduce((a, b) => a+b, 0);
 }
 
 async function p2021day7_part2(input: string, ...params: any[]) {
-	return "Not implemented";
+	const data = input.split(",").map(Number);
+	let lowestRange = 999999999999999;
+	let lowestI = 999999999999;
+	const max = Math.max(...data);
+	for (let i = 0; i< max;i++) {
+		const val = checkN(data, i);
+		
+		if (val < lowestRange) {
+			lowestRange = val;
+			lowestI = i;
+		}
+	}
+
+	return lowestRange;
 }
 
 async function run() {
-	const part1tests: TestCase[] = [];
-	const part2tests: TestCase[] = [];
+	const part1tests: TestCase[] = [{
+		"input": "16,1,2,0,4,2,7,1,2,14",
+		"expected": "37",
+	}];
+	const part2tests: TestCase[] = [{
+		"input": "16,1,2,0,4,2,7,1,2,14",
+		"expected": "168",
+	}];
 
 	// Run tests
 	test.beginTests();
