@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as fs from "fs/promises";
 import crypto from "crypto";
+import { Stack } from 'stack-typescript';
 import { existsSync } from "fs";
 import { fileURLToPath } from "url";
 
