@@ -5,6 +5,8 @@ import chalk from "chalk";
 import { log, logSolution, trace } from "../../../util/log";
 import { performance } from "perf_hooks";
 import { Grid, Cell } from "../../../util/grid";
+import { Stack } from "stack-typescript";
+import { exit } from "process";
 
 const YEAR = 2021;
 const DAY = 9;
@@ -24,7 +26,6 @@ function getData(c: Cell) {
 }
 
 async function p2021day9_part1(input: string, ...params: any[]) {
-	const data = input.split("\n");
 	let r = 0;
 
 	const g = new Grid({
@@ -34,27 +35,50 @@ async function p2021day9_part1(input: string, ...params: any[]) {
 	for (let c of g) {
 		const d = getData(c);
 		if(d.v < d.n && d.v < d.e && d.v < d.w && d.v < d.s) {
-			r += 1;//(1 + d.v);
+			r += (1 + d.v);
 		}
 	}
 
 	return r;
 }
 
-function calcBasin(data: ReturnType<typeof getData>,  cells: Cell[]) {
-	// const c = [cell]
-	// const counted = [cell.index]
-	// cell.index
+function calcBasin(cell: Cell, checked:  number[], legit: number[]) {
+	// Add current cell
+	legit.push(cell.index);
+	checked.push(cell.index);
 
-		// return calcBasin(cell.)
+	// get all other cells
+	const n = cell.north();
+	const s = cell.south();
+	const e = cell.east();
+	const w = cell.west();
+	const others = [n, s, e, w]
+		.filter((item): item is Cell => !!item)
+		.filter(i=>i.value !== "9")
 
+	for(let other of others) {
+		const thisN = Number(cell.value) 
+		const otherN = Number(other.value)
+
+		// been here before?
+		if(checked.includes(other.index)) {
+			continue;
+		}
+
+		// not a dip?
+		if(otherN < thisN) {
+			continue;
+		}
+
+		// recurse!
+		calcBasin(other, checked, legit);
+	}
+
+	return legit.length
 
 }
 
 async function p2021day9_part2(input: string, ...params: any[]) {
-	const data = input.split("\n");
-	let r = 0;
-
 	const g = new Grid({
 		serialized: input
 	});
@@ -63,12 +87,12 @@ async function p2021day9_part2(input: string, ...params: any[]) {
 	for (let c of g) {
 		const d = getData(c);
 		if(d.v < d.n && d.v < d.e && d.v < d.w && d.v < d.s) {
-			const basinSize = calcBasin(d, [])
+			lows.push(d);
 		}
 	}
 
-
-	return r;
+	const pitSizes = lows.map(d => calcBasin(d.c, [], [])).sort((a, b) => b - a);
+	return pitSizes[0] * pitSizes[1] * pitSizes[2];
 }
 
 async function run() {
@@ -84,7 +108,18 @@ async function run() {
 			"expected": "15"
 		}
 	];
-	const part2tests: TestCase[] = [];
+	const part2tests: TestCase[] = [
+		{
+			"input": [
+				"2199943210",
+				"3987894921",
+				"9856789892",
+				"8767896789",
+				"9899965678",
+			].join("\n"),
+			"expected": "1134"
+		}
+	];
 
 	// Run tests
 	test.beginTests();
