@@ -87,7 +87,6 @@ async function p2021day13_part1(input: string, ...params: any[]) {
 	let grid = getStartingGrid(input);
 	const folds = getFolds(input);
 
-	// p1
 	grid = fold(grid, folds[0][0] as any, folds[0][1] as any)	
 	return count(grid);
 }
@@ -96,7 +95,6 @@ async function p2021day13_part2(input: string, ...params: any[]) {
 	let grid = getStartingGrid(input);
 	const folds = getFolds(input);
 
-	// p1
 	for(let f of folds) {
 		grid = fold(grid, f[0] as any, f[1] as any)	
 	}
