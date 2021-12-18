@@ -32,13 +32,13 @@ const truthTable = new Map<digit, string[]>([
 
 const initialLut = ["a", "b", "c", "d", "e", "f", "g"];
 
-function rm(v: string, a: string[]) {
+export function rm<T>(v: T, a: T[]) {
 	const index = a.indexOf(v, 0);
 	if (index > -1) {
 		a.splice(index, 1);
 	}
 }
-function cloneArray(a: any[]) {
+export function cloneArray(a: any[]) {
 	return Object.assign([], a);
 }
 function invertLut(poss: string[]) {

@@ -32,10 +32,14 @@
 		"js-combinatorics": "^1.5.4",
 		"lodash": "^4.17.21",
 		"mkdirp": "^1.0.4",
+		"node-dijkstra": "^2.5.0",
 		"node-localstorage": "^2.2.1",
 		"playwright-chromium": "^1.16.3",
 		"stack-typescript": "^1.0.4",
 		"ts-node": "^10.4.0",
 		"typescript": "^4.4.4"
+	},
+	"devDependencies": {
+		"@types/node-dijkstra": "^2.5.2"
 	}
 }

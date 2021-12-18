@@ -14,7 +14,7 @@ function isBig(cave: string) {
 	return cave.toUpperCase() === cave;
 }
 
-function cloneArray(a: any[]) {
+export function cloneArray(a: any[]) {
 	return Object.assign([], a);
 }
 // solution path: D:\Work\advent-of-code\years\2021\12\index.ts
