@@ -31,7 +31,6 @@ function fire(xV: number, yV: number, tarX: number[], tarY: number[], drag: numb
 		maxY = Math.max(ypos, maxY);
 
 		if(contains(xpos, ypos, tarX, tarY)) {
-			// console.log("YOU SUNKA MAI BATTLESHIP");
 			return true;
 		}
 		
@@ -47,7 +46,6 @@ async function p2021day17_part1(input: string, ...params: any[]) {
 	const xy = input.split("target area: ")[1].split(", ")
 	const x = xy[0].split("=")[1].split("..").map(Number)
 	const y = xy[1].split("=")[1].split("..").map(Number)
-
 
 	let biggestHeight = -1100000;
 
